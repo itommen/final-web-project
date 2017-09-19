@@ -7,63 +7,36 @@
 
 <center>
     <address>
-        We are just near you<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        052-342-9778
-        
-        </address>
-
+        Our office is at
+    </address>
     <address>
-        <strong>Support:</strong>   <a href="mailto:Elhen15@example.com">Elhen@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Sharon@example.com">Sharon@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Sharon@example.com">Tomer@example.com</a>
+        <strong>Owners: </strong> <br />
+        <a href="mailto:danae@example.com">danae@example.com</a><br />
+        <a href="mailto:stavl@example.com">stavl@example.com</a><br />
+        <a href="mailto:noar@example.com">noar@example.com</a><br />
+        <a href="mailto:tomm@example.com">tomm@example.com</a><br />
     </address>
 
 
     <div id="map" style="width: 500px; height: 400px;"></div>
 </center>
-    <script type="text/javascript">
-  var crd, locations;
-  var options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
+<script type="text/javascript">
+    function initMap() {
+        var myLatLng = { lat: 31.957328, lng: 34.84056599999997 };
 
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: myLatLng
+        });
 
-navigator.geolocation.getCurrentPosition(setMap, error, options);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
 
-  function setMap(pos){
-crd = pos.coords;
-locations = [
-      ['YOU',crd.latitude, crd.longitude, crd.accuracy],
-    ];
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: new google.maps.LatLng(crd.latitude, crd.longitude),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+        marker.setMap(map);
+    }
 
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker;
-
-        marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[0][1], locations[0][2]),
-        map: map
-      });
-
-
-      google.maps.event.addListener(marker, 'click', (function(marker) {
-        return function() {
-          infowindow.setContent(locations[0][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker));
-
-  }
-    </script>
+    initMap();
+</script>
