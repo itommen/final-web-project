@@ -1,0 +1,246 @@
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\ApplicationInsights.config
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\csc.exe
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\System.Collections.Immutable.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\System.Reflection.Metadata.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\vbc.exe
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\VBCSCompiler.exe
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\roslyn\VBCSCompiler.exe.config
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\MusicBox.dll.config
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\MusicBox.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\MusicBox.pdb
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Antlr3.Runtime.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\EntityFramework.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\EntityFramework.SqlServer.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.Agent.Intercept.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.DependencyCollector.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.Web.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.WindowsServer.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.ApplicationInsights.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Core.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Cookies.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Facebook.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Google.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.OAuth.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Twitter.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Web.Infrastructure.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Newtonsoft.Json.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Owin.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Helpers.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Mvc.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Optimization.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Razor.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Deployment.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Razor.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\WebGrease.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.DependencyCollector.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.Web.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.WindowsServer.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.ApplicationInsights.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Helpers.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Mvc.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Optimization.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.Razor.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Deployment.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Razor.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Antlr3.Runtime.pdb
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Newtonsoft.Json.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\EntityFramework.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\EntityFramework.SqlServer.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Core.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Facebook.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Cookies.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.OAuth.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Google.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Twitter.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\obj\Debug\MusicBox.csprojResolveAssemblyReference.cache
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\obj\Debug\MusicBox.dll
+F:\InternetApplications\MusicBox\MusicBox\MusicBox\obj\Debug\MusicBox.pdb
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\ApplicationInsights.config
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\csc.exe
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\System.Collections.Immutable.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\System.Reflection.Metadata.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\vbc.exe
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\VBCSCompiler.exe
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\roslyn\VBCSCompiler.exe.config
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\MusicBox.dll.config
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\MusicBox.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\MusicBox.pdb
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Antlr3.Runtime.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\EntityFramework.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\EntityFramework.SqlServer.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.Agent.Intercept.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.DependencyCollector.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.Web.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.WindowsServer.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.ApplicationInsights.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Core.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Cookies.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Facebook.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Google.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.OAuth.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Twitter.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Web.Infrastructure.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Newtonsoft.Json.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Owin.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Helpers.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Mvc.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Optimization.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Razor.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Deployment.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Razor.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\WebGrease.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.DependencyCollector.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.Web.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AI.WindowsServer.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.ApplicationInsights.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Helpers.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Mvc.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Optimization.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.Razor.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Deployment.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\System.Web.WebPages.Razor.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Antlr3.Runtime.pdb
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Newtonsoft.Json.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\EntityFramework.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\EntityFramework.SqlServer.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Core.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Facebook.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Cookies.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.OAuth.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Google.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Twitter.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\git 4\MusicBox\MusicBox\MusicBox\obj\Debug\MusicBox.csprojResolveAssemblyReference.cache
+C:\git 4\MusicBox\MusicBox\MusicBox\obj\Debug\MusicBox.dll
+C:\git 4\MusicBox\MusicBox\MusicBox\obj\Debug\MusicBox.pdb
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\ApplicationInsights.config
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\csc.exe
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\vbc.exe
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\VBCSCompiler.exe
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\MusicBox.dll.config
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\MusicBox.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\MusicBox.pdb
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Antlr3.Runtime.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\EntityFramework.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\EntityFramework.SqlServer.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.Web.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.ApplicationInsights.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Newtonsoft.Json.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Owin.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Helpers.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Mvc.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Optimization.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Razor.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.WebPages.Deployment.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.WebPages.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.WebPages.Razor.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\WebGrease.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.Web.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.ApplicationInsights.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Helpers.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Mvc.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Optimization.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.Razor.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.WebPages.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.WebPages.Deployment.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\System.Web.WebPages.Razor.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Antlr3.Runtime.pdb
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Newtonsoft.Json.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\EntityFramework.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\EntityFramework.SqlServer.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\obj\Debug\MusicBox.csprojResolveAssemblyReference.cache
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\obj\Debug\MusicBox.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\MusicBox\MusicBox\obj\Debug\MusicBox.pdb

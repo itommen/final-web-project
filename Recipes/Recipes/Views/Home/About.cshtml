@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Give us A+ ; ).</p>
+
+<center>
+    <canvas id="canvas" width="578" height="400" />
+</center>
+
+<script>
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj,0 , 0);
+      };
+      imageObj.src = 'http://static.wixstatic.com/media/77cdee_b0993d5e4a7246669be470e7d6f31840~mv2.jpg';
+</script>
