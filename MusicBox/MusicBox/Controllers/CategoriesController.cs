@@ -8,16 +8,16 @@ using MusicBox.Models;
 
 namespace MusicBox.Controllers
 {
-    public class GenresController : Controller
+    public class CategoriesController : Controller
     {
         private Context db = new Context();
 
-        // GET: Genres
+        // GET: Catgories
         public ActionResult Index()
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
-                return View(db.Genres.ToList());
+                return View(db.Categories.ToList());
             }
             else
             {
@@ -25,7 +25,6 @@ namespace MusicBox.Controllers
             }
         }
 
-        // GET: Genres/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -33,16 +32,16 @@ namespace MusicBox.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Genre genre = db.Genres.Find(id);
+            Category category = db.Categories.Find(id);
 
-            if (genre == null)
+            if (category == null)
             {
                 return HttpNotFound();
             }
 
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
-                return View(genre);
+                return View(category);
             }
             else
             {
@@ -50,7 +49,7 @@ namespace MusicBox.Controllers
             }
         }
 
-        // GET: Genres/Create
+        // GET: Categories/Create
         public ActionResult Create()
         {
             if (((Client)Session["Client"]) != null && ((Client)Session["Client"]).isAdmin)
@@ -63,34 +62,34 @@ namespace MusicBox.Controllers
             }
         }
 
-        // POST: Genres/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name")] Genre genre)
+        public ActionResult Create([Bind(Include = "ID,Name")] Category category)
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
                 if (ModelState.IsValid)
                 {
-                    // Checking if the genre already exist
-                    var isExist = db.Genres.Where(x => x.Name == genre.Name).FirstOrDefault();
+                    // Checking if the category already exist
+                    var isExist = db.Categories.Where(x => x.Name == category.Name).FirstOrDefault();
 
                     if (isExist == null)
                     {
-                        db.Genres.Add(genre);
+                        db.Categories.Add(category);
                         db.SaveChanges();
 
                         return RedirectToAction("Index");
                     }
                     else
                     {
-                        return View(genre);
+                        return View(category);
                     }
                 }
 
-                return View(genre);
+                return View(category);
             }
             else
             {
@@ -98,7 +97,7 @@ namespace MusicBox.Controllers
             }   
         }
 
-        // GET: Genres/Edit/5
+        // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
@@ -108,14 +107,14 @@ namespace MusicBox.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                Genre genre = db.Genres.Find(id);
+                Category category = db.Categories.Find(id);
 
-                if (genre == null)
+                if (category == null)
                 {
                     return HttpNotFound();
                 }
 
-                return View(genre);
+                return View(category);
             }
             else
             {
@@ -123,22 +122,22 @@ namespace MusicBox.Controllers
             }
         }
 
-        // POST: Genres/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name")] Genre genre)
+        public ActionResult Edit([Bind(Include = "ID,Name")] Category category)
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(genre).State = EntityState.Modified;
+                    db.Entry(category).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                return View(genre);
+                return View(category);
             }
             else
             {
@@ -146,7 +145,7 @@ namespace MusicBox.Controllers
             }
         }
 
-        // GET: Genres/Delete/5
+        // GET: Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
@@ -155,14 +154,14 @@ namespace MusicBox.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Genre genre = db.Genres.Find(id);
+                Category category = db.Categories.Find(id);
 
-                if (genre == null)
+                if (category == null)
                 {
                     return HttpNotFound();
                 }
 
-                return View(genre);
+                return View(category);
             }
             else
             {
@@ -170,20 +169,20 @@ namespace MusicBox.Controllers
             }
         }
 
-        // POST: Genres/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
-                Genre genre = db.Genres.Find(id);
+                Category category = db.Categories.Find(id);
 
-                // Getting all the posts of the genre
+                // Getting all the posts of the category
                 List<Post> lstPosts = new List<Post>();
-                lstPosts= db.Posts.Where(x => x.Genre.ID == id).ToList();
+                lstPosts= db.Posts.Where(x => x.Category.ID == id).ToList();
 
-                // Removing all the posts of that genre
+                // Removing all the posts of that category
                 foreach (Post curPost in lstPosts)
                 {
                     Post post = db.Posts.Find(curPost.ID);
@@ -199,7 +198,7 @@ namespace MusicBox.Controllers
                     db.Posts.Remove(post);
                 }
 
-                db.Genres.Remove(genre);
+                db.Categories.Remove(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

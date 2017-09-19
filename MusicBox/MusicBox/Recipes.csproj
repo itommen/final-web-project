@@ -199,7 +199,7 @@
     <Compile Include="Controllers\AuthorizationMiddleware.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\GenresController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -210,7 +210,7 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Context.cs" />
-    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />

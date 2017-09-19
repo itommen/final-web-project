@@ -16,7 +16,7 @@ namespace MusicBox.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.Client).Include(p => p.Genre);
+            var posts = db.Posts.Include(p => p.Client).Include(p => p.Category);
             return View(posts.ToList());
         }
 
@@ -57,7 +57,7 @@ namespace MusicBox.Controllers
             if (AuthorizationMiddleware.Authorized(Session))
             {
                 ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName");
-                ViewBag.GenreID = new SelectList(db.Genres, "ID", "Name");
+                ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name");
                 return View();
             }
             else
@@ -71,9 +71,9 @@ namespace MusicBox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,clientId,GenreID,Title,Content")] Post post)
+        public ActionResult Create([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Post post)
         {
-            if (post.Content != null && post.Title != null && post.GenreID != 0)
+            if (post.Content != null && post.Title != null && post.CategoryID != 0)
             {
                 if (AuthorizationMiddleware.Authorized(Session))
                 {
@@ -86,7 +86,7 @@ namespace MusicBox.Controllers
                     }
 
                     ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", post.ClientID);
-                    ViewBag.GenreID = new SelectList(db.Genres, "ID", "Name", post.GenreID);
+                    ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", post.CategoryID);
                     return View(post);
                 }
             }
@@ -113,7 +113,7 @@ namespace MusicBox.Controllers
                     return HttpNotFound();
                 }
                 ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", post.ClientID);
-                ViewBag.GenreID = new SelectList(db.Genres, "ID", "Name", post.GenreID);
+                ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", post.CategoryID);
                 return View(post);
             }
             else
@@ -127,9 +127,9 @@ namespace MusicBox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,clientId,GenreID,Title,Content")] Post post)
+        public ActionResult Edit([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Post post)
         {
-            if (post.Content != null && post.Title != null && post.Genre.Name != null)
+            if (post.Content != null && post.Title != null && post.Category.Name != null)
             {
                 if (AuthorizationMiddleware.Authorized(Session))
                 {
@@ -141,7 +141,7 @@ namespace MusicBox.Controllers
                         return RedirectToAction("Index");
                     }
                     ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", post.ClientID);
-                    ViewBag.GenreID = new SelectList(db.Genres, "ID", "Name", post.GenreID);
+                    ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", post.CategoryID);
                     return View(post);
                 }
             }

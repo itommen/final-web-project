@@ -16,9 +16,9 @@ namespace MusicBox.Models
         public int ClientID { get; set; }
 
         [Required]
-        [ForeignKey("Genre")]
-        [DisplayName("Genre of the Post")]
-        public int GenreID { get; set; }
+        [ForeignKey("Category")]
+        [DisplayName("Food Category")]
+        public int CategoryID { get; set; }
 
         [MaxLength(20)]
         [Required]
@@ -35,7 +35,7 @@ namespace MusicBox.Models
 
         public virtual Client Client { get; set; }
 
-        public virtual Genre Genre { get; set; }
+        public virtual Category Category { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
     }
