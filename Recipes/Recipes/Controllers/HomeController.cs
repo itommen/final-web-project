@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
     public class HomeController : Controller
     {

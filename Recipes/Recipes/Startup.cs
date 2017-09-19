@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(MusicBox.Startup))]
-namespace MusicBox
+[assembly: OwinStartup(typeof(Recipes.Startup))]
+namespace Recipes
 {
     public partial class Startup
     {

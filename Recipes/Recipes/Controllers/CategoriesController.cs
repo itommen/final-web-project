@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
     public class CategoriesController : Controller
     {
@@ -178,24 +178,24 @@ namespace MusicBox.Controllers
             {
                 Category category = db.Categories.Find(id);
 
-                // Getting all the posts of the category
-                List<Post> lstPosts = new List<Post>();
-                lstPosts= db.Posts.Where(x => x.Category.ID == id).ToList();
+                // Getting all the recipes of the category
+                List<Recipe> recipes = new List<Recipe>();
+                recipes= db.Recipes.Where(x => x.Category.ID == id).ToList();
 
-                // Removing all the posts of that category
-                foreach (Post curPost in lstPosts)
+                // Removing all the recipes of that category
+                foreach (Recipe currRecipe in recipes)
                 {
-                    Post post = db.Posts.Find(curPost.ID);
+                    Recipe recipe = db.Recipes.Find(currRecipe.ID);
 
                     List<Comment> lstComments = new List<Comment>();
-                    lstComments = db.Comments.Where(x => x.PostID == curPost.ID).ToList();
+                    lstComments = db.Comments.Where(x => x.RecipeID == currRecipe.ID).ToList();
                     
                     foreach (Comment curComm in lstComments)
                     {
                         db.Comments.Remove(curComm);
                     }
 
-                    db.Posts.Remove(post);
+                    db.Recipes.Remove(recipe);
                 }
 
                 db.Categories.Remove(category);

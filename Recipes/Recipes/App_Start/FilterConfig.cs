@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MusicBox
+namespace Recipes
 {
     public class FilterConfig
     {

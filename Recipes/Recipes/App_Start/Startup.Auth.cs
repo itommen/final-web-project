@@ -4,9 +4,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox
+namespace Recipes
 {
     public partial class Startup
     {

@@ -5,9 +5,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
     [Authorize]
     public class AccountController : Controller

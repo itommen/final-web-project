@@ -1,5 +1,5 @@
 ﻿@{
-    MusicBox.Models.Client clnt = (MusicBox.Models.Client)Session["Client"];
+    Recipes.Models.Client clnt = (Recipes.Models.Client)Session["Client"];
 }
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Posts", "Index", "Posts")</li>
+                    <li>@Html.ActionLink("Recipes", "Index", "Recipes")</li>
                     @if (clnt != null && clnt.isAdmin)
                     {
                         <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
@@ -36,7 +36,7 @@
                         <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
                     }
                     <li>@Html.ActionLink("Users Statistics", "Stats", "Clients")</li>
-                    <li>@Html.ActionLink("Posts Statistics", "Stats", "Posts")</li>
+                    <li>@Html.ActionLink("Recipes Statistics", "Stats", "Recipes")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

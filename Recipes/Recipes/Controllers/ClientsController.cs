@@ -5,9 +5,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
     public class ClientsController : Controller
     {
@@ -195,22 +195,22 @@ namespace MusicBox.Controllers
             {
                 Client client = db.Clients.Find(id);
 
-                List<Post> lstPosts = new List<Post>();
+                List<Recipe> recipes = new List<Recipe>();
 
-                // Get the posts of the user
-                lstPosts = db.Posts.Where(x => x.ClientID == id).ToList();
+                // Get the recipes of the user
+                recipes = db.Recipes.Where(x => x.ClientID == id).ToList();
 
-                foreach (Post currPost in lstPosts)
+                foreach (Recipe currRecipe in recipes)
                 {
-                    List<Comment> lstComments = new List<Comment>();
-                    lstComments = db.Comments.Where(x => x.PostID == currPost.ID).ToList();
+                    List<Comment> comments = new List<Comment>();
+                    comments = db.Comments.Where(x => x.RecipeID == currRecipe.ID).ToList();
                     
-                    foreach (Comment currCmt in lstComments)
+                    foreach (Comment currCmt in comments)
                     {
                         db.Comments.Remove(currCmt);
                     }
 
-                    db.Posts.Remove(currPost);
+                    db.Recipes.Remove(currRecipe);
                 }
 
                 db.Clients.Remove(client);
@@ -234,15 +234,15 @@ namespace MusicBox.Controllers
         // GET: Client/Stats
         public ActionResult Stats()
         {
-            // join select for users and their posts
+            // join select for users and their recipes
             var query = (from u in db.Clients
-                         join post in db.Posts on u.ID equals post.ClientID
-                         select new userPostsViewModel
+                         join recipe in db.Recipes on u.ID equals recipe.ClientID
+                         select new UserRecipesViewModel
                          {
                              UserName = u.ClientName,
                              FirstName = u.FirstName,
                              LastName = u.LastName,
-                             Title = post.Title,
+                             Title = recipe.Title,
                              ID = u.ID
                          });
             var data = query.ToList();

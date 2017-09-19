@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MusicBox.Models
+namespace Recipes.Models
 {
-    public class Post
+    public class Recipe
     {
         public int ID { get; set; }
 
@@ -40,11 +40,11 @@ namespace MusicBox.Models
         public virtual List<Comment> Comments { get; set; }
     }
 
-    public class PostCommentViewModel
+    public class RecipeCommentViewModel
     {
         public int ID { get; set; }
 
-        [DisplayName("The Post")]
+        [DisplayName("The Recipe")]
         public string Title { get; set; }
 
         [DisplayName("Number Of Comments")]

@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
     public class CommentsController : Controller
     {
@@ -13,7 +13,7 @@ namespace MusicBox.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.Client).Include(c => c.Post);
+            var comments = db.Comments.Include(c => c.Client).Include(c => c.Recipe);
             return View(comments.ToList());
         }
 
@@ -38,7 +38,7 @@ namespace MusicBox.Controllers
             if (AuthorizationMiddleware.Authorized(Session))
             {
                 ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName");
-                ViewBag.PostID = new SelectList(db.Posts, "ID", "Content");
+                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content");
                 return View();
             }
             else
@@ -52,7 +52,7 @@ namespace MusicBox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ClientID,PostID,Content,CreationDate")] Comment comment)
+        public ActionResult Create([Bind(Include = "ID,ClientID,RecipeID,Content,CreationDate")] Comment comment)
         {
             if (AuthorizationMiddleware.Authorized(Session))
             {
@@ -64,7 +64,7 @@ namespace MusicBox.Controllers
                 }
 
                 ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", comment.ClientID);
-                ViewBag.PostID = new SelectList(db.Posts, "ID", "Content", comment.PostID);
+                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content", comment.RecipeID);
                 return View(comment);
             }
             else
@@ -89,7 +89,7 @@ namespace MusicBox.Controllers
                     return HttpNotFound();
                 }
                 ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", comment.ClientID);
-                ViewBag.PostID = new SelectList(db.Posts, "ID", "Content", comment.PostID);
+                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content", comment.RecipeID);
                 return View(comment);
             }
             else
@@ -104,7 +104,7 @@ namespace MusicBox.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ClientID,PostID,Content,CreationDate")] Comment comment)
+        public ActionResult Edit([Bind(Include = "ID,ClientID,RecipeID,Content,CreationDate")] Comment comment)
         {
             if (AuthorizationMiddleware.Authorized(Session))
             {
@@ -115,7 +115,7 @@ namespace MusicBox.Controllers
                     return RedirectToAction("Index");
                 }
                 ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", comment.ClientID);
-                ViewBag.PostID = new SelectList(db.Posts, "ID", "Content", comment.PostID);
+                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content", comment.RecipeID);
                 return View(comment);
             }
             else

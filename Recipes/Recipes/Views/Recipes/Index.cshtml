@@ -1,22 +1,18 @@
-﻿@{
-    ViewBag.Title = "Search";
-}
-
-@model IEnumerable<MusicBox.Models.Post>
+﻿@model IEnumerable<Recipes.Models.Recipe>
 
 @{
-    ViewBag.Title = "Search Results";
-    MusicBox.Models.Client clnt = (MusicBox.Models.Client)Session["Client"];
+    ViewBag.Title = "Recipes";
+    Recipes.Models.Client clnt = (Recipes.Models.Client)Session["Client"];
 }
 
-@if (clnt != null)
-{
-    <button>
-        @Html.ActionLink("Create a new Post", "Create")
-    </button>
-}
-
-@using (Html.BeginForm("Search", "Posts", FormMethod.Get))
+    @if (clnt != null)
+    {
+        <button>
+            @Html.ActionLink("Create a new Recipe", "Create")
+        </button>
+    }
+  
+@using (Html.BeginForm("Search", "Recipes", FormMethod.Get))
 {
     <div class="row">
         <div class="form-group">
@@ -56,34 +52,34 @@
         </div>
     </div>
 }
-@foreach (var post in Model)
-{
-    <section>
-        <article class="blogPost">
-            <header>
-                <h2>@Html.DisplayFor(modelItem => post.Category.Name)</h2>
-                <p>Posted on @Html.DisplayFor(modelItem => post.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => post.Client.ClientName)</a> - <a href="#comments">@post.Comments.Count Comments</a></p>
-            </header>
+    @foreach (var recipe in Model)
+    {
+        <section>
+            <article class="blogPost">
+                <header>
+                    <h2>@Html.DisplayFor(modelItem => recipe.Category.Name)</h2>
+                    <p>Posted on @Html.DisplayFor(modelItem => recipe.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => recipe.Client.ClientName)</a> - <a href="#comments">@recipe.Comments.Count Comments</a></p>
+                </header>
+                
+                <h3>
+                    @Html.DisplayFor(modelItem => recipe.Title)
+                </h3>
+                @Html.DisplayFor(modelItem => recipe.Content)
 
-            <h3>
-                @Html.DisplayFor(modelItem => post.Title)
-            </h3>
-            @Html.DisplayFor(modelItem => post.Content)
-
-            @if (clnt != null && clnt.isAdmin)
+                @if (clnt != null && clnt.isAdmin)
                 {
-                <div>
-                    @Html.ActionLink("Edit", "Edit", new { id = post.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = post.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = post.ID })
-                </div>
-            }
+                        <div>
+                            @Html.ActionLink("Edit", "Edit", new { id = recipe.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = recipe.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = recipe.ID })
+                        </div>
+                }
 
-        </article>
-    </section>
+            </article>
+        </section>
         <section id="comments">
             <h3>Comments</h3>
-            @foreach (var comment in post.Comments)
+            @foreach (var comment in recipe.Comments)
             {
                 <article>
                     <header>
@@ -95,11 +91,11 @@
 
             @if (clnt != null)
             {
-                using (Html.BeginForm("PostComment", "Posts"))
+                using (Html.BeginForm("PostComment", "Recipes"))
                 {
 
                     <input type="hidden" name="clientId" value="@clnt.ID" />
-                    <input type="hidden" name="postId" value="@post.ID" />
+                    <input type="hidden" name="recipeId" value="@recipe.ID" />
 
                     <div>
                         Content: <input type="text" name="content" />
@@ -114,5 +110,5 @@
                 }
             }
         </section>
-}
+    }
 

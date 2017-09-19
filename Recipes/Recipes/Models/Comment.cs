@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MusicBox.Models
+namespace Recipes.Models
 {
     public class Comment
     {
@@ -14,8 +14,8 @@ namespace MusicBox.Models
         public int ClientID { get; set; }
 
         [Required]
-        [ForeignKey("Post")]
-        public int PostID { get; set; }
+        [ForeignKey("Recipe")]
+        public int RecipeID { get; set; }
 
         [Required]
         public string Content { get; set; }
@@ -24,7 +24,7 @@ namespace MusicBox.Models
         [DisplayName("Created at")]
         public DateTime CreationDate { get; set; }
 
-        public virtual Post Post { get; set; }
+        public virtual Recipe Recipe { get; set; }
 
         public virtual Client Client { get; set; }
     }

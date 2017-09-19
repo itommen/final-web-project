@@ -1,7 +1,7 @@
 ﻿using System.Web;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
     public static class AuthorizationMiddleware
     {

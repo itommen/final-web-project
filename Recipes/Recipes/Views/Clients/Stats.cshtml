@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MusicBox.Models.userPostsViewModel>
+﻿@model IEnumerable<Recipes.Models.UserRecipesViewModel>
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
@@ -16,22 +16,22 @@
         }).Distinct();
 
         // collection of users and there comments
-        var usersPostsInfo = usersInfo.Select(user => new
+        var usersRecipesInfo = usersInfo.Select(user => new
         {
             UserID = user.ID,
             UserName =  user.UserName,
             FirstName = user.FirstName,
             LastName = user.LastName,
-            Posts = Model.Where(y => y.ID == user.ID).ToArray()
+            Recipes = Model.Where(y => y.ID == user.ID).ToArray()
         });
 
-        // collection of users and number of posts (for JSON phi data)
-        var usersReplayCount = usersPostsInfo.Select(x => new { Name = x.UserName, Count = x.Posts.Count() });
+        // collection of users and number of recipes (for JSON phi data)
+        var usersReplayCount = usersRecipesInfo.Select(x => new { Name = x.UserName, Count = x.Recipes.Count() });
         
         }
 
     <h2 class="page-title">@ViewBag.Title</h2>
-    <p>The most popular reviewers by how much they write posts.</p>
+    <p>The most popular reviewers by how much they write recipes.</p>
 
     <table class="table">
         <tr>
@@ -50,7 +50,7 @@
         </tr>
 
         @{
-            foreach (var user in usersPostsInfo)
+            foreach (var user in usersRecipesInfo)
             {
                 <tr>
                     <td>
@@ -65,12 +65,12 @@
                     <td>
                         <ul>
                             @{
-                                // print posts for each user
-                                foreach (var post in user.Posts)
+                                // print recipes for each user
+                                foreach (var recipe in user.Recipes)
                                 {
                                     <li>
-                                        @post.Title 
-                                        @Html.ActionLink(post.Title, "../Posts/DetailsByTitle", new { title = post.Title})
+                                        @recipe.Title 
+                                        @Html.ActionLink(recipe.Title, "../Recipes/DetailsByTitle", new { title = recipe.Title})
                                     </li>
                                 }
                             }

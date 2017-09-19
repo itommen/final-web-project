@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace MusicBox.Models
+namespace Recipes.Models
 {
     public class Client
     {
@@ -28,10 +28,10 @@ namespace MusicBox.Models
 
         public virtual List<Comment> Comments { get; set; }
 
-        public virtual List<Post> Posts { get; set; }
+        public virtual List<Recipe> Recipes { get; set; }
     }
 
-    public class userPostsViewModel
+    public class UserRecipesViewModel
     {
         public int ID { get; set; }
 
@@ -45,7 +45,7 @@ namespace MusicBox.Models
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        [DisplayName("The Post")]
+        [DisplayName("The Recipe")]
         public string Title { get; set; }
     }
     public enum Gender

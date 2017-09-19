@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace MusicBox
+namespace Recipes
 {
     public class BundleConfig
     {

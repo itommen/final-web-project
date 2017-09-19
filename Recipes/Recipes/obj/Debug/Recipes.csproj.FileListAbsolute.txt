@@ -11,9 +11,6 @@ C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\rosl
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\roslyn\vbc.exe
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\roslyn\VBCSCompiler.exe
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\MusicBox.dll.config
-C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\MusicBox.dll
-C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\MusicBox.pdb
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Antlr3.Runtime.dll
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\EntityFramework.dll
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\EntityFramework.SqlServer.dll
@@ -78,5 +75,8 @@ C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Micr
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\obj\Debug\Recipes.csprojResolveAssemblyReference.cache
-C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\obj\Debug\MusicBox.dll
-C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\obj\Debug\MusicBox.pdb
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Recipes.dll.config
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Recipes.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\bin\Recipes.pdb
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\obj\Debug\Recipes.dll
+C:\Users\danaeliyahu\Desktop\project2\final-web-project\Recipes\Recipes\obj\Debug\Recipes.pdb

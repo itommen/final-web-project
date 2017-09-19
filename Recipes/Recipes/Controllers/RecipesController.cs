@@ -5,53 +5,53 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using MusicBox.Models;
+using Recipes.Models;
 
-namespace MusicBox.Controllers
+namespace Recipes.Controllers
 {
-    public class PostsController : Controller
+    public class RecipesController : Controller
     {
         private Context db = new Context();
 
-        // GET: Posts
+        // GET: Recipes
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.Client).Include(p => p.Category);
-            return View(posts.ToList());
+            var recipes = db.Recipes.Include(p => p.Client).Include(p => p.Category);
+            return View(recipes.ToList());
         }
 
-        // GET: Posts/Details/5
+        // GET: Recipes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Recipe recipe = db.Recipes.Find(id);
+            if (recipe == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(recipe);
         }
 
-        // GET: Posts/DetailsByTitle?title=Hardwierd
+        // GET: Recipes/DetailsByTitle?title=Hardwierd
         public ActionResult DetailsByTitle(string title)
         {
             if (title == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Where(x=> x.Title == title).FirstOrDefault();
+            Recipe recipe = db.Recipes.Where(x=> x.Title == title).FirstOrDefault();
 
-            if (post == null)
+            if (recipe == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(recipe);
         }
 
-        // GET: Posts/Create
+        // GET: Recipes/Create
         public ActionResult Create()
         {
             if (AuthorizationMiddleware.Authorized(Session))
@@ -66,28 +66,28 @@ namespace MusicBox.Controllers
             }
         }
 
-        // POST: Posts/Create
+        // POST: Recipes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Post post)
+        public ActionResult Create([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Recipe recipe)
         {
-            if (post.Content != null && post.Title != null && post.CategoryID != 0)
+            if (recipe.Content != null && recipe.Title != null && recipe.CategoryID != 0)
             {
                 if (AuthorizationMiddleware.Authorized(Session))
                 {
                     if (ModelState.IsValid)
                     {
-                        post.CreationDate = DateTime.Now;
-                        db.Posts.Add(post);
+                        recipe.CreationDate = DateTime.Now;
+                        db.Recipes.Add(recipe);
                         db.SaveChanges();
                         return RedirectToAction("Index");
                     }
 
-                    ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", post.ClientID);
-                    ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", post.CategoryID);
-                    return View(post);
+                    ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", recipe.ClientID);
+                    ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", recipe.CategoryID);
+                    return View(recipe);
                 }
             }
             else
@@ -98,7 +98,7 @@ namespace MusicBox.Controllers
             return RedirectToAction("Index", "Home"); 
         }
 
-        // GET: Posts/Edit/5
+        // GET: Recipes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (AuthorizationMiddleware.Authorized(Session))
@@ -107,14 +107,14 @@ namespace MusicBox.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Post post = db.Posts.Find(id);
-                if (post == null)
+                Recipe recipe = db.Recipes.Find(id);
+                if (recipe == null)
                 {
                     return HttpNotFound();
                 }
-                ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", post.ClientID);
-                ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", post.CategoryID);
-                return View(post);
+                ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", recipe.ClientID);
+                ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", recipe.CategoryID);
+                return View(recipe);
             }
             else
             {
@@ -122,27 +122,27 @@ namespace MusicBox.Controllers
             }
         }
 
-        // POST: Posts/Edit/5
+        // POST: Recipes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Post post)
+        public ActionResult Edit([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Recipe recipe)
         {
-            if (post.Content != null && post.Title != null && post.Category.Name != null)
+            if (recipe.Content != null && recipe.Title != null && recipe.Category.Name != null)
             {
                 if (AuthorizationMiddleware.Authorized(Session))
                 {
                     if (ModelState.IsValid)
                     {
-                        post.CreationDate = DateTime.Now;
-                        db.Entry(post).State = EntityState.Modified;
+                        recipe.CreationDate = DateTime.Now;
+                        db.Entry(recipe).State = EntityState.Modified;
                         db.SaveChanges();
                         return RedirectToAction("Index");
                     }
-                    ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", post.ClientID);
-                    ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", post.CategoryID);
-                    return View(post);
+                    ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", recipe.ClientID);
+                    ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", recipe.CategoryID);
+                    return View(recipe);
                 }
             }
             else
@@ -153,7 +153,7 @@ namespace MusicBox.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // GET: Posts/Delete/5
+        // GET: Recipes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (AuthorizationMiddleware.Authorized(Session))
@@ -162,12 +162,12 @@ namespace MusicBox.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Post post = db.Posts.Find(id);
-                if (post == null)
+                Recipe recipe = db.Recipes.Find(id);
+                if (recipe == null)
                 {
                     return HttpNotFound();
                 }
-                return View(post);
+                return View(recipe);
             }
             else
             {
@@ -175,7 +175,7 @@ namespace MusicBox.Controllers
             }
         }
 
-        // POST: Posts/Delete/5
+        // POST: Recipes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -183,20 +183,20 @@ namespace MusicBox.Controllers
             if (AuthorizationMiddleware.Authorized(Session))
             {
 
-                Post post = db.Posts.Find(id);
+                Recipe recipe = db.Recipes.Find(id);
 
-                // Getting all the comments of the post
+                // Getting all the comments of the recipe
                 List<Comment> lstRemove = new List<Comment>();
-                lstRemove = db.Comments.Where(x => x.Post.ID == id).ToList();
+                lstRemove = db.Comments.Where(x => x.Recipe.ID == id).ToList();
 
-                // Removing all the comments of that post
+                // Removing all the comments of that recipe
                 foreach (Comment cur in lstRemove)
                 {
                     Comment comment = db.Comments.Find(cur.ID);
                     db.Comments.Remove(comment);
                 }
 
-                db.Posts.Remove(post);
+                db.Recipes.Remove(recipe);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -206,7 +206,7 @@ namespace MusicBox.Controllers
             }
         }
 
-        public ActionResult PostComment(int clientId, int postId, string content)
+        public ActionResult PostComment(int clientId, int recipeId, string content)
         {
             if (AuthorizationMiddleware.Authorized(Session))
             {
@@ -214,7 +214,7 @@ namespace MusicBox.Controllers
                 {
                     Content = content,
                     ClientID = clientId,
-                    PostID = postId,
+                    RecipeID = recipeId,
                     CreationDate = DateTime.Now
                 };
 
@@ -233,13 +233,13 @@ namespace MusicBox.Controllers
         // GET: Client/Stats
         public ActionResult Stats()
         {
-           var query = db.Posts.Select(x => new PostCommentViewModel {Title = x.Title, NumberOfComment = x.Comments.Count}).ToList();
+           var query = db.Recipes.Select(x => new RecipeCommentViewModel {Title = x.Title, NumberOfComment = x.Comments.Count}).ToList();
            return View(query);
         }
 
         public ActionResult StatsJson()
         {
-            var query = db.Posts.Select(x => new PostCommentViewModel { Title = x.Title, NumberOfComment = x.Comments.Count }).ToList();
+            var query = db.Recipes.Select(x => new RecipeCommentViewModel { Title = x.Title, NumberOfComment = x.Comments.Count }).ToList();
             var data = Json(query, JsonRequestBehavior.AllowGet);
             return data;
         }
@@ -247,30 +247,30 @@ namespace MusicBox.Controllers
         [HttpGet]
         public ActionResult Search(string content, string title, DateTime? date)
         {
-            var queryPosts = new List<Post>();
+            var queryRecipes = new List<Recipe>();
 
-            foreach (var post in db.Posts)
+            foreach (var recipe in db.Recipes)
             {
-                if (content != null && content.Length > 0 && post.Content.Contains(content))
+                if (content != null && content.Length > 0 && recipe.Content.Contains(content))
                 {
-                    queryPosts.Add(post);
+                    queryRecipes.Add(recipe);
                 }
-                else if (title != null && title.Length > 0 && post.Title.Contains(title))
+                else if (title != null && title.Length > 0 && recipe.Title.Contains(title))
                 {
-                    queryPosts.Add(post);
+                    queryRecipes.Add(recipe);
                 }
                 else if (date != null)
                 {
-                    var formattedDatePost = post.CreationDate.ToString("MM/dd/yyyy");
+                    var formattedDateRecipe = recipe.CreationDate.ToString("MM/dd/yyyy");
                     var formattedDate = date.Value.ToString("MM/dd/yyyy");
-                    if (formattedDatePost.Equals(formattedDate))
+                    if (formattedDateRecipe.Equals(formattedDate))
                     {
-                        queryPosts.Add(post);
+                        queryRecipes.Add(recipe);
                     }
                 }
             }
 
-            return View(queryPosts.OrderByDescending(x => x.CreationDate));
+            return View(queryRecipes.OrderByDescending(x => x.CreationDate));
         }
 
 

@@ -43,7 +43,7 @@ function createPopularUsersGraph(data, id) {
         .text(function (d) { return d.data.Name; });
 }
 
-function createPopularPostsGraph(data) {
+function createPopularRecipesGraph(data) {
 
     var margin = { top: 20, right: 20, bottom: 70, left: 40 },
     width = 600 - margin.left - margin.right,
@@ -68,7 +68,7 @@ function createPopularPostsGraph(data) {
 
 
     // add the SVG element
-    var svg = d3.select("#popular-posts-graph").append("svg")
+    var svg = d3.select("#popular-recipes-graph").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
       .append("g")

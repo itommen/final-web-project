@@ -1,16 +1,16 @@
-﻿@model IEnumerable<MusicBox.Models.PostCommentViewModel>
+﻿@model IEnumerable<Recipes.Models.RecipeCommentViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Statistics of the Posts</h2>
+<h2>Statistics of the Recipes</h2>
 @{
 
-    var postComments = Model;
+    var recipeComments = Model;
 }
 
 <h2 class="page-title">@ViewBag.Title</h2>
-<p>The most popular reviewers by how much they write posts.</p>
+<p>The most popular reviewers by how much they write recipes.</p>
 
 <table class="table">
     <tr>
@@ -23,14 +23,14 @@
     </tr>
 
     @{
-        foreach (var post in postComments)
+        foreach (var recipe in recipeComments)
         {
             <tr>
                 <td>
-                    @post.Title
+                    @recipe.Title
                 </td>
                 <td>
-                    @post.NumberOfComment
+                    @recipe.NumberOfComment
                 </td>
             </tr>
         }
@@ -59,7 +59,7 @@
             shape-rendering: crispEdges;
         }
 </style>
-<section id="popular-posts-graph">
+<section id="popular-recipes-graph">
     <h3>Bar Chart</h3>
 </section>
 
@@ -68,10 +68,10 @@
 <script>
     // print JSON data
     $.ajax({
-        url: '/Posts/StatsJson',
+        url: '/Recipes/StatsJson',
         success: function (result) {
             var usersData = result;
-            createPopularPostsGraph(usersData);
+            createPopularRecipesGraph(usersData);
         },
         error: function(hxr, status, err) {
             console.log('status: ' + status + ', error: ' + err);
