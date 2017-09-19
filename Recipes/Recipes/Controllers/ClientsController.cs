@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Recipes.Models;
+using Recipes.ViewModels;
 
 namespace Recipes.Controllers
 {
@@ -176,7 +177,7 @@ namespace Recipes.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult MusicBoxLogin()
+        public ActionResult RecipesLogin()
         {
           return View();
         }

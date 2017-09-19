@@ -39,15 +39,4 @@ namespace Recipes.Models
 
         public virtual List<Comment> Comments { get; set; }
     }
-
-    public class RecipeCommentViewModel
-    {
-        public int ID { get; set; }
-
-        [DisplayName("The Recipe")]
-        public string Title { get; set; }
-
-        [DisplayName("Number Of Comments")]
-        public int NumberOfComment { get; set; }
-    }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Recipes.Models;
+using Recipes.ViewModels;
 
 namespace Recipes.Controllers
 {
@@ -42,13 +43,13 @@ namespace Recipes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Recipe recipe = db.Recipes.Where(x=> x.Title == title).FirstOrDefault();
+            Recipe recipe = db.Recipes.FirstOrDefault(x => x.Title == title);
 
             if (recipe == null)
             {
                 return HttpNotFound();
             }
-            return View(recipe);
+            return View("Details", recipe);
         }
 
         // GET: Recipes/Create

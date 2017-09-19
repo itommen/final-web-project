@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Recipes.Models;
+using Recipes.ViewModels;
 
 namespace Recipes.Controllers
 {

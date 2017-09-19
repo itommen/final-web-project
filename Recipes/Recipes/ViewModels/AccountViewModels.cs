@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Recipes.Models
+namespace Recipes.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -37,13 +37,6 @@ namespace Recipes.Models
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
-    }
-
-    public class ForgotViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
     }
 
     public class LoginViewModel

@@ -27,11 +27,11 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Recipes", "Index", "Recipes")</li>
-                    @if (clnt != null && clnt.isAdmin)
+                    @if (clnt != null && clnt.IsAdmin)
                     {
                         <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
                     }
-                    @if (clnt != null && clnt.isAdmin)
+                    @if (clnt != null && clnt.IsAdmin)
                     {
                         <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
                     }

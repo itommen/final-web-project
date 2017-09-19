@@ -52,7 +52,7 @@ namespace Recipes.Controllers
         // GET: Categories/Create
         public ActionResult Create()
         {
-            if (((Client)Session["Client"]) != null && ((Client)Session["Client"]).isAdmin)
+            if (((Client)Session["Client"]) != null && ((Client)Session["Client"]).IsAdmin)
             {
                 return View();
             }
