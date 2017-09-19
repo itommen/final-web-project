@@ -1,0 +1,20 @@
+﻿<!--Sharon Grozman - 311429963 -->
+<!--Elhen Shmailov - 313736639 -->
+<!--Tomer Parizer - 312465602-->
+
+@{
+    MusicBox.Models.Client clnt = ((MusicBox.Models.Client)Session["Client"]);
+}
+
+<ul class="nav navbar-nav navbar-right">
+    @if (clnt == null)
+    {
+        <li>@Html.ActionLink("Register", "Create", "Clients") </li>
+        <li>@Html.ActionLink("Login", "MusicBoxLogin", "Clients") </li>
+    }
+    else
+    {
+        <li><a style="color: white !important; font-size: 18px;pointer-events:none;" href="#">Welcome @(clnt.FirstName + " " + clnt.LastName)</a></li>
+        <li>@Html.ActionLink("Log Out", "Logout", "Clients")</li>
+    }
+</ul>
