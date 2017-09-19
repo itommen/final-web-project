@@ -13,37 +13,31 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Recipes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Recipes", "Index", "Recipes")</li>
-                    @if (clnt != null && clnt.IsAdmin)
-                    {
-                        <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
-                    }
-                    @if (clnt != null && clnt.IsAdmin)
-                    {
-                        <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
-                    }
-                    <li>@Html.ActionLink("Users Statistics", "Stats", "Clients")</li>
-                    <li>@Html.ActionLink("Recipes Statistics", "Stats", "Recipes")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    <header class="navbar navbar-dark flex-column flex-md-row bd-navbar">
+        <div class="navbar-header">
+            @Html.ActionLink("Recipes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
-    </div>
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Recipes", "Index", "Recipes", new { area = "" }, new { @class = "nav-link" })</li>
+                @if (clnt != null && clnt.IsAdmin)
+                {
+                    <li class="nav-item">@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, new { @class = "nav-link" })</li>
+                }
+                @if (clnt != null && clnt.IsAdmin)
+                {
+                    <li class="nav-item">@Html.ActionLink("Clients", "Index", "Clients", new { area = "" }, new { @class = "nav-link" })</li>
+                }
+                <li class="nav-item">@Html.ActionLink("Users Statistics", "Stats", "Clients", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Recipes Statistics", "Stats", "Recipes", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
+        </div>
+                @Html.Partial("_LoginPartial")
+
+    </header>
     <div class="container body-content">
         @RenderBody()
         
@@ -58,12 +52,12 @@
         <script src="~/Scripts/weather.js"></script>
         <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='jerusalem, il') and u='c'&format=json&callback=weatherCallback"></script>
         <hr />
-        <footer>
-            <center>
-                <p>&copy; @DateTime.Now.Year - EST - Recipes </p>
-            </center>
-        </footer>
-    </div>
+            <footer>
+                <center>
+                    <p>&copy; @DateTime.Now.Year - EST - Recipes </p>
+                </center>
+            </footer>
+        </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

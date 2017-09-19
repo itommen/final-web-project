@@ -11,7 +11,7 @@ namespace Recipes.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A place to share recipes";
 
             return View();
         }
