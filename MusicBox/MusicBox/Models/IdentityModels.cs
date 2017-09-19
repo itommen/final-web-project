@@ -1,8 +1,4 @@
-﻿// Sharon Grozman - 311429963 
-// Elhen Shmailov - 313736639
-// Tomer Parizer - 312465602
-using System.Data.Entity;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

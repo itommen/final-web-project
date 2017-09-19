@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(MusicBox.Startup))]
+[assembly: OwinStartup(typeof(MusicBox.Startup))]
 namespace MusicBox
 {
     public partial class Startup
