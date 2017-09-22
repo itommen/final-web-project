@@ -5,12 +5,7 @@
     Recipes.Models.Client clnt = (Recipes.Models.Client)Session["Client"];
 }
 
-    @if (clnt != null)
-    {
-        <button type="button" class="btn">
-            @Html.ActionLink("Create a new Recipe", "Create")
-        </button>
-    }
+   
   
 @using (Html.BeginForm("Search", "Recipes", FormMethod.Get))
 {
@@ -46,21 +41,33 @@
     </div>
     <div class="row">
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-10" align="left">
                 <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+            <div class="col-md-offset-2 col-md-10" align="right">
+                @if (clnt != null)
+                {
+                    <button type="button" class="btn">
+                        @Html.ActionLink("Create a new Recipe", "Create")
+                    </button>
+                }
             </div>
         </div>
     </div>
+
+    <hr/>
 }
     @foreach (var recipe in Model)
     {
         <section>
             <article class="blogPost">
+                <hr/>
                 <header>
                     <h2>@Html.DisplayFor(modelItem => recipe.Category.Name)</h2>
-                    <p>Posted on @Html.DisplayFor(modelItem => recipe.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => recipe.Client.ClientName)</a> - <a href="#comments">@recipe.Comments.Count Comments</a></p>
+                    <p>Posted on @Html.DisplayFor(modelItem => recipe.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => recipe.Client.ClientName)</a> - <a href="#comments">@recipe.Comments.Count Comments</a>
+                    </p>
                 </header>
-                
+
                 <h3>
                     @Html.DisplayFor(modelItem => recipe.Title)
                 </h3>
@@ -68,11 +75,11 @@
 
                 @if (clnt != null && clnt.IsAdmin)
                 {
-                        <div>
-                            @Html.ActionLink("Edit", "Edit", new { id = recipe.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = recipe.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = recipe.Id })
-                        </div>
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new {id = recipe.Id}) |
+                        @Html.ActionLink("Details", "Details", new {id = recipe.Id}) |
+                        @Html.ActionLink("Delete", "Delete", new {id = recipe.Id})
+                    </div>
                 }
 
             </article>

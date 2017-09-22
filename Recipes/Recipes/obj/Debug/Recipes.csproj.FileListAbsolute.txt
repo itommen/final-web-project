@@ -162,7 +162,6 @@ C:\Users\danaeliyahu\Desktop\project\Recipes\Recipes\bin\Microsoft.Owin.Security
 C:\Users\danaeliyahu\Desktop\project\Recipes\Recipes\obj\Debug\Recipes.csprojResolveAssemblyReference.cache
 C:\Users\danaeliyahu\Desktop\project\Recipes\Recipes\obj\Debug\Recipes.dll
 C:\Users\danaeliyahu\Desktop\project\Recipes\Recipes\obj\Debug\Recipes.pdb
-C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\obj\Debug\Recipes.csprojResolveAssemblyReference.cache
 C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\bin\ApplicationInsights.config
 C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\bin\roslyn\csc.exe
 C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -244,3 +243,4 @@ C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\bin\Microsoft.Ow
 C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\obj\Debug\Recipes.dll
 C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\obj\Debug\Recipes.pdb
+C:\Users\stavlev\Source\Repos\final-web-project\Recipes\Recipes\obj\Debug\Recipes.csprojResolveAssemblyReference.cache

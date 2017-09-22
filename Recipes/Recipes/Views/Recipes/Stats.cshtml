@@ -5,12 +5,11 @@
 
 <h2>Statistics of the Recipes</h2>
 @{
-
     var recipeComments = Model;
 }
 
 <h2 class="page-title">@ViewBag.Title</h2>
-<p>The most popular reviewers by how much they write recipes.</p>
+<p>The most popular reviewers by the number of comments they wrote</p>
 
 <table class="table">
     <tr>
@@ -60,7 +59,8 @@
         }
 </style>
 <section id="popular-recipes-graph">
-    <h3>Bar Chart</h3>
+    <h3>Bar Chart - Most popular recipes</h3>
+    <p>Show the most popular recipes according to the number of comments they got</p>
 </section>
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>

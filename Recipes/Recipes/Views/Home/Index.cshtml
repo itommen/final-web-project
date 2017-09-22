@@ -2,24 +2,31 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1 style="text-shadow: 5px 5px grey;">Recipes
-    </h1>
-    <p class="lead">A site for sharing recipes, with everyone. </p>
+<div style="background-image: url(&quot;../../tasty.jpg&quot;); min-height: 200px; position: relative">
+    <div style="position: absolute; bottom: 0; left: 10px">
+        <h1 style="color: white; vertical-align: bottom">
+            Recipes
+        </h1>
+        <h4 style="color: white; vertical-align: bottom">
+            where you can share your passion for cooking & baking with everyone
+        </h4>
+    </div>
 </div>
-
+<br/>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6" style="padding-right: 40px;">
         <h2>Getting started</h2>
+        <br/>
         <p>
-            In our website, you can enjoy a variety of recipes from all around the world 
-            And also you can share your personal recipe with everyone and recieve feedback and suggestions
+            In our website, you can enjoy a variety of recipes from all around the world
+            And also share your personal recipes with everyone and receive feedback and suggestions.
+            Once logged in, click on "Recipes" on the top menu to begin!
         </p>
     </div>
     <div class="col-md-6">
-        <h2>Our Best</h2>
-        <video width="300" height="300" controls>
+        <h2>Our Best Recipes</h2>
+        <video width="300" height="240" controls>
             <source src="~/Content/Tasty.mp4" type="video/mp4">
-        </video>         
+        </video>
     </div>
 </div>

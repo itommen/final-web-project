@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Recipes</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -43,12 +43,13 @@
         
         <center>
             <div id="temperatureDiv">
+                <br/><hr/>
                 <h4>Weather</h4>
                 <p>getting info...</p>
             </div>
         </center>
 
-        <!-- Weather service -->
+        <!-- Weather webservice -->
         <script src="~/Scripts/weather.js"></script>
         <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='jerusalem, il') and u='c'&format=json&callback=weatherCallback"></script>
         <hr />
