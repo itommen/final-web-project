@@ -12,7 +12,7 @@
             UserName = x.UserName,
             FirstName = x.FirstName,
             LastName = x.LastName,
-            ID = x.ID
+            ID = x.Id
         }).Distinct();
 
         // collection of users and there comments
@@ -22,7 +22,7 @@
             UserName =  user.UserName,
             FirstName = user.FirstName,
             LastName = user.LastName,
-            Recipes = Model.Where(y => y.ID == user.ID).ToArray()
+            Recipes = Model.Where(y => y.Id == user.ID).ToArray()
         });
 
         // collection of users and number of recipes (for JSON phi data)

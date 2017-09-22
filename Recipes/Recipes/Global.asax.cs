@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Recipes.Models;
+using Recipes.Models.Db;
 
 namespace Recipes
 {
@@ -18,7 +19,7 @@ namespace Recipes
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelsMapping>());
         }
     }
 }

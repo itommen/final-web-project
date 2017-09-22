@@ -3,174 +3,150 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Recipes.Models;
+using Recipes.Models.Db;
 
 namespace Recipes.Controllers
 {
     public class CommentsController : Controller
     {
-        private Context db = new Context();
+        private readonly ModelsMapping _db = new ModelsMapping();
 
-        // GET: Comments
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.Client).Include(c => c.Recipe);
+            var comments = _db.Comments.Include(c => c.Client).Include(c => c.Recipe);
+
             return View(comments.ToList());
         }
 
-        // GET: Comments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
+
+            var comment = _db.Comments.Find(id);
+
             if (comment == null)
             {
                 return HttpNotFound();
             }
+
             return View(comment);
         }
 
-        // GET: Comments/Create
         public ActionResult Create()
         {
-            if (AuthorizationMiddleware.Authorized(Session))
-            {
-                ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName");
-                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content");
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            if (!AuthorizationMiddleware.Authorized(Session)) return RedirectToAction("Index", "Home");
+
+            ViewBag.ClientID = new SelectList(_db.Clients, "ID", "ClientName");
+            ViewBag.RecipeID = new SelectList(_db.Recipes, "ID", "Content");
+
+            return View();
         }
 
-        // POST: Comments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ClientID,RecipeID,Content,CreationDate")] Comment comment)
         {
-            if (AuthorizationMiddleware.Authorized(Session))
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Comments.Add(comment);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+            if (!AuthorizationMiddleware.Authorized(Session)) return RedirectToAction("Index", "Home");
 
-                ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", comment.ClientID);
-                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content", comment.RecipeID);
-                return View(comment);
-            }
-            else
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                _db.Comments.Add(comment);
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-              
+
+            ViewBag.ClientID = new SelectList(_db.Clients, "ID", "ClientName", comment.ClientId);
+            ViewBag.RecipeID = new SelectList(_db.Recipes, "ID", "Content", comment.RecipeId);
+
+            return View(comment);
         }
 
-        // GET: Comments/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (AuthorizationMiddleware.Authorized(Session))
+            if (!AuthorizationMiddleware.Authorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Comment comment = db.Comments.Find(id);
-                if (comment == null)
-                {
-                    return HttpNotFound();
-                }
-                ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", comment.ClientID);
-                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content", comment.RecipeID);
-                return View(comment);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+
+            var comment = _db.Comments.Find(id);
+
+            if (comment == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
-            
+
+            ViewBag.ClientID = new SelectList(_db.Clients, "ID", "ClientName", comment.ClientId);
+            ViewBag.RecipeID = new SelectList(_db.Recipes, "ID", "Content", comment.RecipeId);
+
+            return View(comment);
         }
 
-        // POST: Comments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ClientID,RecipeID,Content,CreationDate")] Comment comment)
         {
-            if (AuthorizationMiddleware.Authorized(Session))
+            if (!AuthorizationMiddleware.Authorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(comment).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                ViewBag.ClientID = new SelectList(db.Clients, "ID", "ClientName", comment.ClientID);
-                ViewBag.RecipeID = new SelectList(db.Recipes, "ID", "Content", comment.RecipeID);
-                return View(comment);
+                _db.Entry(comment).State = EntityState.Modified;
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            ViewBag.ClientID = new SelectList(_db.Clients, "ID", "ClientName", comment.ClientId);
+            ViewBag.RecipeID = new SelectList(_db.Recipes, "ID", "Content", comment.RecipeId);
+
+            return View(comment);
         }
 
-        // GET: Comments/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (AuthorizationMiddleware.Authorized(Session))
+            if (!AuthorizationMiddleware.Authorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Comment comment = db.Comments.Find(id);
-                if (comment == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(comment);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+
+            var comment = _db.Comments.Find(id);
+
+            if (comment == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
-                
+
+            return View(comment);
         }
 
-        // POST: Comments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (AuthorizationMiddleware.Authorized(Session))
-            {
-                Comment comment = db.Comments.Find(id);
-                db.Comments.Remove(comment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            if (!AuthorizationMiddleware.Authorized(Session)) return RedirectToAction("Index", "Home");
+
+            var comment = _db.Comments.Find(id);
+
+            _db.Comments.Remove(comment);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

@@ -1,170 +1,140 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Recipes.Models;
+using Recipes.Models.Db;
 using Recipes.ViewModels;
 
 namespace Recipes.Controllers
 {
     public class ClientsController : Controller
     {
-        private Context db = new Context();
+        private readonly ModelsMapping _db = new ModelsMapping();
 
-        // GET: Clients
         public ActionResult Index()
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
-                return View(db.Clients.ToList());
+                return View(_db.Clients.ToList());
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            return RedirectToAction("Index", "Home");
         }
 
-        // GET: Clients/Details/5
         public ActionResult Details(int? id)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Client client = db.Clients.Find(id);
-                if (client == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(client);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+
+            var client = _db.Clients.Find(id);
+
+            if (client == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
+
+            return View(client);
         }
 
-        // GET: Clients/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Clients/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Gender,ClientName,FirstName,LastName,Password,isAdmin")] Client client)
         {
-           if (ModelState.IsValid)
-           {
-                // Checking if the user already exist
-                var isExist = db.Clients.Where(x => x.ClientName == client.ClientName).FirstOrDefault();
+            if (!ModelState.IsValid) return View(client);
 
-                if (isExist == null)
-                {
-                    db.Clients.Add(client);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+            var requestedUser = _db.Clients.FirstOrDefault(x => x.ClientName == client.ClientName);
 
+            if (requestedUser != null) return View(client);
+
+            _db.Clients.Add(client);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            var client = _db.Clients.Find(id);
+
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+
             return View(client);
         }
 
-        // GET: Clients/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Client client = db.Clients.Find(id);
-                if (client == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(client);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        // POST: Clients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Gender,ClientName,FirstName,LastName,Password,isAdmin")] Client client)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(client).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(client);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (!ModelState.IsValid) return View(client);
+
+            _db.Entry(client).State = EntityState.Modified;
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Clients/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Client client = db.Clients.Find(id);
-                if (client == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(client);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+
+            var client = _db.Clients.Find(id);
+
+            if (client == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
+
+            return View(client);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login([Bind(Include = "ClientName,Password")] Client client)
         {
-            Client clnt = null;
             var pass = client.Password;
             var logonName = client.ClientName;
 
             try
             {
-                clnt = db.Clients.Single(u => u.ClientName.Equals(logonName) && u.Password.Equals(pass));
+                var requestedClient = _db.Clients.Single(u => u.ClientName.Equals(logonName) && u.Password.Equals(pass));
 
-                if (clnt != null)
+                if (requestedClient != null)
                 {
-                    Session.Add("Client", clnt);
+                    Session.Add("Client", requestedClient);
                 }
 
                 return RedirectToAction("Index", "Home");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return RedirectToAction("FailedLogin", "Clients");
             }
@@ -179,7 +149,7 @@ namespace Recipes.Controllers
 
         public ActionResult RecipesLogin()
         {
-          return View();
+            return View();
         }
 
         public ActionResult FailedLogin()
@@ -187,113 +157,97 @@ namespace Recipes.Controllers
             return View();
         }
 
-        // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            var client = _db.Clients.Find(id);
+
+            var recipes = _db.Recipes.Where(x => x.ClientId == id).ToList();
+
+            foreach (var currRecipe in recipes)
             {
-                Client client = db.Clients.Find(id);
-
-                List<Recipe> recipes = new List<Recipe>();
-
-                // Get the recipes of the user
-                recipes = db.Recipes.Where(x => x.ClientID == id).ToList();
-
-                foreach (Recipe currRecipe in recipes)
-                {
-                    List<Comment> comments = new List<Comment>();
-                    comments = db.Comments.Where(x => x.RecipeID == currRecipe.ID).ToList();
+                var comments = _db.Comments.Where(x => x.RecipeId == currRecipe.Id).ToList();
                     
-                    foreach (Comment currCmt in comments)
-                    {
-                        db.Comments.Remove(currCmt);
-                    }
-
-                    db.Recipes.Remove(currRecipe);
-                }
-
-                db.Clients.Remove(client);
-
-                db.SaveChanges();
-
-                if (((Client)Session["Client"]).ID == id)
+                foreach (var currComment in comments)
                 {
-                    Session.Clear();
+                    _db.Comments.Remove(currComment);
                 }
 
-                return RedirectToAction("Index");
+                _db.Recipes.Remove(currRecipe);
             }
-            else
+
+            _db.Clients.Remove(client);
+            _db.SaveChanges();
+
+            if (((Client)Session["Client"]).Id == id)
             {
-                return RedirectToAction("Index", "Home");
+                Session.Clear();
             }
-        
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Client/Stats
         public ActionResult Stats()
         {
             // join select for users and their recipes
-            var query = (from u in db.Clients
-                         join recipe in db.Recipes on u.ID equals recipe.ClientID
-                         select new UserRecipesViewModel
-                         {
-                             UserName = u.ClientName,
-                             FirstName = u.FirstName,
-                             LastName = u.LastName,
-                             Title = recipe.Title,
-                             ID = u.ID
-                         });
-            var data = query.ToList();
-            return View(data);
+            var query =
+                from client in _db.Clients
+                join recipe in _db.Recipes on client.Id equals recipe.ClientId
+                select new UserRecipesViewModel
+                {
+                    UserName = client.ClientName,
+                    FirstName = client.FirstName,
+                    LastName = client.LastName,
+                    Title = recipe.Title,
+                    Id = client.Id
+                };
+
+            return View(query.ToList());
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
         [HttpGet]
         public ActionResult Search(string username, string firstname, string lastname)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                var queryClients = new List<Client>();
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
 
-                foreach (var client in db.Clients)
+            var requestedClients = new List<Client>();
+
+            foreach (var client in _db.Clients)
+            {
+                if (!string.IsNullOrEmpty(username) && client.ClientName.Contains(username))
                 {
-                    if (username != null && username.Length > 0 && client.ClientName.Contains(username))
-                    {
-                        queryClients.Add(client);
-                    }
-                    else if (firstname != null && firstname.Length > 0 && client.FirstName.Contains(firstname))
-                    {
-                        queryClients.Add(client);
-                    }
-                    else if (lastname != null && lastname.Length > 0 && client.LastName.Contains(lastname))
-                    {
-                        queryClients.Add(client);
-                    }
+                    requestedClients.Add(client);
                 }
+                else if (!string.IsNullOrEmpty(firstname) && client.FirstName.Contains(firstname))
+                {
+                    requestedClients.Add(client);
+                }
+                else if (!string.IsNullOrEmpty(lastname) && client.LastName.Contains(lastname))
+                {
+                    requestedClients.Add(client);
+                }
+            }
 
-                return View(queryClients.OrderByDescending(x => x.ClientName));
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return View(requestedClients.OrderByDescending(x => x.ClientName));
         }
 
         [HttpGet]
         public ActionResult GetGroupByGender()
         {
-            var data = db.Clients.GroupBy(x => x.Gender, client => client, (gender, clients) => new
+            var data = _db.Clients.GroupBy(x => x.Gender, client => client, (gender, clients) => new
             {
                 Name = gender.ToString(),
                 Count = clients.Count()

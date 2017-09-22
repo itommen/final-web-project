@@ -69,9 +69,9 @@
                 @if (clnt != null && clnt.IsAdmin)
                 {
                         <div>
-                            @Html.ActionLink("Edit", "Edit", new { id = recipe.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id = recipe.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = recipe.ID })
+                            @Html.ActionLink("Edit", "Edit", new { id = recipe.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = recipe.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = recipe.Id })
                         </div>
                 }
 
@@ -94,8 +94,8 @@
                 using (Html.BeginForm("PostComment", "Recipes"))
                 {
 
-                    <input type="hidden" name="clientId" value="@clnt.ID" />
-                    <input type="hidden" name="recipeId" value="@recipe.ID" />
+                    <input type="hidden" name="clientId" value="@clnt.Id" />
+                    <input type="hidden" name="recipeId" value="@recipe.Id" />
 
                     <div>
                         Content: <input type="text" name="content" />

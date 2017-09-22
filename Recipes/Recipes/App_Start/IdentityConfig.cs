@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Recipes.Models;
+using Recipes.Models.Db;
 
 namespace Recipes
 {

@@ -8,17 +8,17 @@ namespace Recipes.Models
 {
     public class Recipe
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [ForeignKey("Client")]
         [DisplayName("Posting Client")]
-        public int ClientID { get; set; }
+        public int ClientId { get; set; }
 
         [Required]
         [ForeignKey("Category")]
         [DisplayName("Food Category")]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
 
         [MaxLength(20)]
         [Required]

@@ -7,15 +7,15 @@ namespace Recipes.Models
 {
     public class Comment
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [ForeignKey("Client")]
-        public int ClientID { get; set; }
+        public int ClientId { get; set; }
 
         [Required]
         [ForeignKey("Recipe")]
-        public int RecipeID { get; set; }
+        public int RecipeId { get; set; }
 
         [Required]
         public string Content { get; set; }

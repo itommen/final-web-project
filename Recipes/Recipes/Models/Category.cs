@@ -6,7 +6,7 @@ namespace Recipes.Models
 {
     public class Category
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [DisplayName("Food Category")]

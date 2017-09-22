@@ -1,28 +1,26 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Recipes.Models;
+using Recipes.Models.Db;
 
 namespace Recipes.Controllers
 {
     public class CategoriesController : Controller
     {
-        private Context db = new Context();
+        private readonly ModelsMapping _db = new ModelsMapping();
 
         // GET: Catgories
         public ActionResult Index()
         {
             if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
-                return View(db.Categories.ToList());
+                return View(_db.Categories.ToList());
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Details(int? id)
@@ -32,7 +30,7 @@ namespace Recipes.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Category category = db.Categories.Find(id);
+            var category = _db.Categories.Find(id);
 
             if (category == null)
             {
@@ -43,130 +41,89 @@ namespace Recipes.Controllers
             {
                 return View(category);
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            return RedirectToAction("Index", "Home");
         }
 
-        // GET: Categories/Create
         public ActionResult Create()
         {
-            if (((Client)Session["Client"]) != null && ((Client)Session["Client"]).IsAdmin)
+            if ((Client)Session["Client"] != null && ((Client)Session["Client"]).IsAdmin)
             {
                 return View();
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            return RedirectToAction("Index", "Home");
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name")] Category category)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                if (ModelState.IsValid)
-                {
-                    // Checking if the category already exist
-                    var isExist = db.Categories.Where(x => x.Name == category.Name).FirstOrDefault();
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
 
-                    if (isExist == null)
-                    {
-                        db.Categories.Add(category);
-                        db.SaveChanges();
+            if (!ModelState.IsValid) return View(category);
 
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        return View(category);
-                    }
-                }
+            var requestedCategory = _db.Categories.FirstOrDefault(x => x.Name == category.Name);
 
-                return View(category);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }   
+            if (requestedCategory != null) return View(category);
+
+            _db.Categories.Add(category);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-
-                Category category = db.Categories.Find(id);
-
-                if (category == null)
-                {
-                    return HttpNotFound();
-                }
-
-                return View(category);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+
+            var category = _db.Categories.Find(id);
+
+            if (category == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
+
+            return View(category);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name")] Category category)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(category).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(category);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            if (!ModelState.IsValid) return View(category);
+
+            _db.Entry(category).State = EntityState.Modified;
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Categories/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Category category = db.Categories.Find(id);
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
 
-                if (category == null)
-                {
-                    return HttpNotFound();
-                }
-
-                return View(category);
-            }
-            else
+            if (id == null)
             {
-                return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            var category = _db.Categories.Find(id);
+
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(category);
         }
 
         // POST: Categories/Delete/5
@@ -174,46 +131,38 @@ namespace Recipes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
+            if (!AuthorizationMiddleware.AdminAuthorized(Session)) return RedirectToAction("Index", "Home");
+
+            var category = _db.Categories.Find(id);
+            var recipes = _db.Recipes.Where(x => x.Category.Id == id).ToList();
+
+            foreach (var currRecipe in recipes)
             {
-                Category category = db.Categories.Find(id);
+                var recipe = _db.Recipes.Find(currRecipe.Id);
 
-                // Getting all the recipes of the category
-                List<Recipe> recipes = new List<Recipe>();
-                recipes= db.Recipes.Where(x => x.Category.ID == id).ToList();
-
-                // Removing all the recipes of that category
-                foreach (Recipe currRecipe in recipes)
-                {
-                    Recipe recipe = db.Recipes.Find(currRecipe.ID);
-
-                    List<Comment> lstComments = new List<Comment>();
-                    lstComments = db.Comments.Where(x => x.RecipeID == currRecipe.ID).ToList();
+                var commentsToRemove = _db.Comments.Where(x => x.RecipeId == currRecipe.Id).ToList();
                     
-                    foreach (Comment curComm in lstComments)
-                    {
-                        db.Comments.Remove(curComm);
-                    }
-
-                    db.Recipes.Remove(recipe);
+                foreach (var currComment in commentsToRemove)
+                {
+                    _db.Comments.Remove(currComment);
                 }
 
-                db.Categories.Remove(category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                _db.Recipes.Remove(recipe);
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            _db.Categories.Remove(category);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

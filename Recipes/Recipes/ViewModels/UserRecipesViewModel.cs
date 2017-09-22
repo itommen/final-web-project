@@ -4,7 +4,7 @@ namespace Recipes.ViewModels
 {
     public class UserRecipesViewModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [DisplayName("User Name")]
         public string UserName { get; set; }

@@ -6,7 +6,7 @@ namespace Recipes.Models
 {
     public class Client
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
   
         public Gender Gender { get; set; }
 
