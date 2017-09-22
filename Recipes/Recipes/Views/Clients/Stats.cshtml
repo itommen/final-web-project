@@ -1,107 +1,108 @@
-﻿@model IEnumerable<Recipes.ViewModels.UserRecipesViewModel>
+﻿<h2 class="page-title" style="margin-top: 30px">@ViewBag.Title</h2>
+
+@model IEnumerable<Recipes.ViewModels.UserRecipesViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    // collections of users
+    var usersInfo = Model.Select(x => new
+    {
+        UserName = x.UserName,
+        FirstName = x.FirstName,
+        LastName = x.LastName,
+        ID = x.Id
+    }).Distinct();
+
+    // collection of users and their comments
+    var usersRecipesInfo = usersInfo.Select(user => new
+    {
+        UserID = user.ID,
+        UserName = user.UserName,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
+        Recipes = Model.Where(y => y.Id == user.ID).ToArray()
+    });
+
+    // collection of users and number of recipes (for JSON phi data)
+    var usersReplayCount = usersRecipesInfo.Select(x => new { Name = x.UserName, Count = x.Recipes.Count() });
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+    </tr>
+
     @{
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
-    <h2>User Statistics</h2><br/>
-    @{
-        // collections of users
-        var usersInfo = Model.Select(x => new
+        foreach (var user in usersRecipesInfo)
         {
-            UserName = x.UserName,
-            FirstName = x.FirstName,
-            LastName = x.LastName,
-            ID = x.Id
-        }).Distinct();
-
-        // collection of users and there comments
-        var usersRecipesInfo = usersInfo.Select(user => new
-        {
-            UserID = user.ID,
-            UserName =  user.UserName,
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Recipes = Model.Where(y => y.Id == user.ID).ToArray()
-        });
-
-        // collection of users and number of recipes (for JSON phi data)
-        var usersReplayCount = usersRecipesInfo.Select(x => new { Name = x.UserName, Count = x.Recipes.Count() });
-        
-        }
-
-    <h2 class="page-title">@ViewBag.Title</h2>
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-        </tr>
-
-        @{
-            foreach (var user in usersRecipesInfo)
-            {
-                <tr>
-                    <td>
-                        @user.UserName
-                    </td>
-                    <td>
-                        @user.FirstName
-                    </td>
-                    <td>
-                        @user.LastName
-                    </td>
-                    <td>
-                        <ul>
-                            @{
-                                // print recipes for each user
-                                foreach (var recipe in user.Recipes)
-                                {
-                                    <li>
-                                        @recipe.Title 
-                                        @Html.ActionLink(recipe.Title, "../Recipes/DetailsByTitle", new { title = recipe.Title})
-                                    </li>
-                                }
+            <tr>
+                <td>
+                    @user.UserName
+                </td>
+                <td>
+                    @user.FirstName
+                </td>
+                <td>
+                    @user.LastName
+                </td>
+                <td>
+                    <ul>
+                        @{
+                            // print recipes for each user
+                            foreach (var recipe in user.Recipes)
+                            {
+                                <li>
+                                    @recipe.Title
+                                    @Html.ActionLink(recipe.Title, "../Recipes/DetailsByTitle", new { title = recipe.Title })
+                                </li>
                             }
-                        </ul>
-                    </td>
-                </tr>
-                                }
+                        }
+                    </ul>
+                </td>
+            </tr>
         }
-    </table>
+    }
+</table>
 
-    <section id="popular-clients-graph">
-        <h3>Pie Chart - Most popular reviewers</h3>
-        <p>Show the most popular users according to the number of recipes they've added so far</p>
-    </section>
+<hr/>
 
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="~/Scripts/graph.js"></script>
-    <script>
+<section id="popular-clients-graph">
+    <h4>Most popular reviewers</h4>
+    <p>Show the most popular users according to the number of recipes they've added so far</p>
+</section>
+
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="~/Scripts/graph.js"></script>
+<script>
         var usersData = @Html.Raw(Json.Encode(usersReplayCount));
         createPopularUsersGraph(usersData, "popular-clients-graph");
-    </script>
+</script>
 
 <hr/>
 
 <section id="popular-gender-graph">
-    <h3>Pie Chart - Users by gender</h3>
+    <h4>Users by gender</h4>
     <p>Show the users who added recipes split by their gender</p>
 </section>
 <script>
         $.ajax({
             url: '/Clients/GetGroupByGender',
-            success: function(data) {
-                createPopularUsersGraph(data, "popular-gender-graph");        
+            success: function (data) {
+                createPopularUsersGraph(data, "popular-gender-graph");
             }
         })
 </script>

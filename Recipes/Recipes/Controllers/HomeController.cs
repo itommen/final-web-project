@@ -9,13 +9,6 @@ namespace Recipes.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "A place to share recipes";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

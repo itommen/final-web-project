@@ -221,11 +221,11 @@ namespace Recipes.Controllers
 
             foreach (var recipe in _db.Recipes)
             {
-                if (!string.IsNullOrEmpty(content) && recipe.Content.Contains(content))
+                if (!string.IsNullOrEmpty(content) && recipe.Content.ToLower().Contains(content.ToLower()))
                 {
                     queryRecipes.Add(recipe);
                 }
-                else if (!string.IsNullOrEmpty(title) && recipe.Title.Contains(title))
+                else if (!string.IsNullOrEmpty(title) && recipe.Title.ToLower().Contains(title.ToLower()))
                 {
                     queryRecipes.Add(recipe);
                 }

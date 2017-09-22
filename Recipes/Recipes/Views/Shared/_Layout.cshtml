@@ -29,21 +29,20 @@
                 {
                     <li class="nav-item">@Html.ActionLink("Clients", "Index", "Clients", new { area = "" }, new { @class = "nav-link" })</li>
                 }
-                <li class="nav-item">@Html.ActionLink("Users Statistics", "Stats", "Clients", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Recipes Statistics", "Stats", "Recipes", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("User Statistics", "Stats", "Clients", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Recipe Statistics", "Stats", "Recipes", new { area = "" }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
             </ul>
         </div>
-                @Html.Partial("_LoginPartial")
+        @Html.Partial("_LoginPartial")
 
     </header>
     <div class="container body-content">
         @RenderBody()
-        
+
         <center>
             <div id="temperatureDiv">
-                <br/><hr/>
+                <br /><hr />
                 <h4>Weather</h4>
                 <p>getting info...</p>
             </div>
@@ -53,12 +52,12 @@
         <script src="~/Scripts/weather.js"></script>
         <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='jerusalem, il') and u='c'&format=json&callback=weatherCallback"></script>
         <hr />
-            <footer>
-                <center>
-                    <p>&copy; @DateTime.Now.Year - EST - Recipes </p>
-                </center>
-            </footer>
-        </div>
+        <footer>
+            <center>
+                <p>&copy; @DateTime.Now.Year - EST - Recipes </p>
+            </center>
+        </footer>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

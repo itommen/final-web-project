@@ -1,15 +1,13 @@
-﻿@model IEnumerable<Recipes.ViewModels.RecipeCommentViewModel>
+﻿<h2 class="page-title" style="margin-top: 30px">@ViewBag.Title</h2>
+
+@model IEnumerable<Recipes.ViewModels.RecipeCommentViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Statistics of the Recipes</h2>
 @{
     var recipeComments = Model;
 }
-
-<h2 class="page-title">@ViewBag.Title</h2>
-<p>The most popular reviewers by the number of comments they wrote</p>
 
 <table class="table">
     <tr>
@@ -39,34 +37,36 @@
 
 <style>
     .bar {
-        fill: steelblue;
+        fill: green;
         transition: fill 3s;
     }
 
-        .bar:hover {
-            fill: brown;
-        }
+    .bar:hover {
+        fill: brown;
+    }
 
     .axis {
         font: 10px sans-serif;
     }
 
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
 </style>
+
+<hr/>
+
 <section id="popular-recipes-graph">
-    <h3>Bar Chart - Most popular recipes</h3>
+    <h4>Most popular recipes</h4>
     <p>Show the most popular recipes according to the number of comments they got</p>
 </section>
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="~/Scripts/graph.js"></script>
 <script>
-    // print JSON data
     $.ajax({
         url: '/Recipes/StatsJson',
         success: function (result) {
