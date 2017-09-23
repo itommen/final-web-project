@@ -6,10 +6,13 @@ namespace Recipes.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayName("The Recipe")]
+        [DisplayName("Recipe")]
         public string Title { get; set; }
 
         [DisplayName("Number Of Comments")]
         public int NumberOfComment { get; set; }
+
+        [DisplayName("Author")]
+        public string AuthorFullName { get; set; }
     }
 }

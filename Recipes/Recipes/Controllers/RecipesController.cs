@@ -199,17 +199,32 @@ namespace Recipes.Controllers
 
         public ActionResult Stats()
         {
-           var query = _db.Recipes.Select(x =>
-                new RecipeCommentViewModel {Title = x.Title, NumberOfComment = x.Comments.Count}).ToList();
+            var query =
+                from recipe in _db.Recipes
+                join client in _db.Clients on recipe.ClientId equals client.Id
+                select new RecipeCommentViewModel
+                {
+                    Title = recipe.Title,
+                    NumberOfComment = recipe.Comments.Count,
+                    AuthorFullName = client.FirstName + " " + client.LastName
+                };
 
-           return View(query);
+           return View(query.ToList());
         }
 
         public ActionResult StatsJson()
         {
-            var query = _db.Recipes.Select(x =>
-                new RecipeCommentViewModel { Title = x.Title, NumberOfComment = x.Comments.Count }).ToList();
-            var data = Json(query, JsonRequestBehavior.AllowGet);
+            var query =
+                from recipe in _db.Recipes
+                join client in _db.Clients on recipe.ClientId equals client.Id
+                select new RecipeCommentViewModel
+                {
+                    Title = recipe.Title,
+                    NumberOfComment = recipe.Comments.Count,
+                    AuthorFullName = client.FirstName + " " + client.LastName
+                };
+           
+            var data = Json(query.ToList(), JsonRequestBehavior.AllowGet);
 
             return data;
         }

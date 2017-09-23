@@ -9,14 +9,13 @@ namespace Recipes.ViewModels
         [DisplayName("User Name")]
         public string UserName { get; set; }
 
-
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        [DisplayName("The Recipe")]
+        [DisplayName("Recipe")]
         public string Title { get; set; }
     }
 }

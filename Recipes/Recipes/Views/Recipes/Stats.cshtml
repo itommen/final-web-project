@@ -17,6 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.NumberOfComment)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorFullName)
+        </th>
     </tr>
 
     @{
@@ -28,6 +31,9 @@
                 </td>
                 <td>
                     @recipe.NumberOfComment
+                </td>
+                <td>
+                    @recipe.AuthorFullName
                 </td>
             </tr>
         }
