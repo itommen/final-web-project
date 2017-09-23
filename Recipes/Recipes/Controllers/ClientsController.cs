@@ -61,7 +61,7 @@ namespace Recipes.Controllers
             _db.Clients.Add(client);
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("RecipesLogin", "Clients");    
         }
 
         public ActionResult Edit(int? id)
