@@ -159,7 +159,7 @@ namespace Recipes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,clientId,CategoryID,Title,Content")] Recipe recipe)
         {
-            if (recipe.Content == null || recipe.Title == null || recipe.Category.Name == null)
+            if (recipe.Content == null || recipe.Title == null)
             {
                 return RedirectToAction("Index", "Home");
             }

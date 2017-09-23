@@ -4,16 +4,18 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Recipe</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="margin: 20px 0">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        
         <dt>
             @Html.DisplayNameFor(model => model.Client.ClientName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Client.ClientName)
         </dd>
@@ -21,21 +23,13 @@
         <dt>
             @Html.DisplayNameFor(model => model.Category.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Category.Name)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Content)
         </dd>
@@ -55,23 +49,18 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<div id="fb-root">
-    <script>
-(function (d, s, id) {
-            var fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            var js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
-         data-layout="button_count" data-size="small" data-mobile-iframe="true">
-        <a class="fb-xfbml-parse-ignore" target="_blank"
-           href="http://localhost:53013/Recipes/Details/1">
-            Share
-        </a>
-    </div>
+<!-- Your share button code -->
+<div class="fb-share-button" 
+     data-href="http://www.your-domain.com/your-page.html" 
+     data-layout="button_count">
 </div>

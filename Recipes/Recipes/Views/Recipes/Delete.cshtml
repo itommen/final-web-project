@@ -4,17 +4,19 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h6 style="margin: 20px 0">Are you sure you want to delete this recipe?</h6>
 <div>
-    <h4>Recipe</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="margin: 20px 0">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Client.ClientName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Client.ClientName)
         </dd>
@@ -22,21 +24,13 @@
         <dt>
             @Html.DisplayNameFor(model => model.Category.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Category.Name)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Content)
         </dd>
@@ -44,11 +38,9 @@
         <dt>
             @Html.DisplayNameFor(model => model.CreationDate)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CreationDate)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
