@@ -18,7 +18,37 @@ namespace Recipes.Controllers
         {
             var recipes = _db.Recipes.Include(p => p.Client).Include(p => p.Category);
 
+            var recommendedRecipe = GetRecommendedRecipe(recipes);
+            ViewBag.RecommendedRecipe = recommendedRecipe;
+
             return View(recipes.ToList());
+        }
+
+        private Recipe GetRecommendedRecipe(IQueryable<Recipe> allRecipes)
+        {
+            var currentUser = (Client)Session["Client"];
+
+            if (currentUser == null) return null;
+
+            var currentUserFromDb = _db.Clients.Where(x => x.Id == currentUser.Id).Include("Recipes").SingleOrDefault();
+
+            if (currentUserFromDb == null) return null;
+
+            var currentUserRecipes = currentUserFromDb.Recipes;
+
+            // Find the food category in which the current user wrote most of his recipes, and then get the
+            // recipe with the biggest number of comments in this category and display it to the current user
+            // as his recommended recipe
+            Category currUserTopCategory = currentUserRecipes
+                .GroupBy(x => x.Category)
+                .OrderByDescending(x => x.Key.Recipes.Count(recipe => recipe.ClientId == currentUser.Id))
+                .FirstOrDefault()?.Key;
+            Recipe recommendedRecipe = allRecipes
+                .Where(x => x.Category.Id == currUserTopCategory.Id)
+                .OrderByDescending(x => x.Comments.Count)
+                .FirstOrDefault();
+
+            return recommendedRecipe;
         }
 
         public ActionResult Details(int? id)
@@ -36,6 +66,19 @@ namespace Recipes.Controllers
             }
 
             return View(recipe);
+        }
+
+        public ActionResult RecommendedRecipeDetails()
+        {
+            var recipes = _db.Recipes.Include(p => p.Client).Include(p => p.Category);
+            var recommendedRecipe = GetRecommendedRecipe(recipes);
+
+            if (recommendedRecipe == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("Details", recommendedRecipe);
         }
 
         public ActionResult DetailsByTitle(string title)
@@ -209,7 +252,7 @@ namespace Recipes.Controllers
                     AuthorFullName = client.FirstName + " " + client.LastName
                 };
 
-           return View(query.ToList());
+            return View(query.ToList());
         }
 
         public ActionResult StatsJson()
@@ -223,7 +266,7 @@ namespace Recipes.Controllers
                     NumberOfComment = recipe.Comments.Count,
                     AuthorFullName = client.FirstName + " " + client.LastName
                 };
-           
+
             var data = Json(query.ToList(), JsonRequestBehavior.AllowGet);
 
             return data;

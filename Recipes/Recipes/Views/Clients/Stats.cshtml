@@ -26,8 +26,7 @@
     });
 
     // collection of users and number of recipes (for JSON phi data)
-    var usersReplayCount = usersRecipesInfo.Select(x => new { Name = x.UserName, Count = x.Recipes.Count() });
-
+    var usersReplayCount = usersRecipesInfo.Select(x => new { Name = x.UserName, Count = x.Recipes.Length });
 }
 
 <table class="table">
@@ -66,7 +65,6 @@
                             foreach (var recipe in user.Recipes)
                             {
                                 <li>
-                                    @recipe.Title
                                     @Html.ActionLink(recipe.Title, "../Recipes/DetailsByTitle", new { title = recipe.Title })
                                 </li>
                             }

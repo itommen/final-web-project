@@ -11,7 +11,7 @@ namespace Recipes.Models
         public Gender Gender { get; set; }
 
         [Required]
-        [DisplayName("Logon Name")]
+        [DisplayName("Username")]
         public string ClientName { get; set; }
 
         [DisplayName("First Name")]
@@ -28,6 +28,6 @@ namespace Recipes.Models
 
         public virtual List<Comment> Comments { get; set; }
 
-        public virtual List<Recipe> Recipes { get; set; }
+        public List<Recipe> Recipes { get; set; } = new List<Recipe>();
     }
 }
