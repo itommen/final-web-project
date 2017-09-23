@@ -6,49 +6,46 @@
 
 @using (Html.BeginForm("Search", "Clients", FormMethod.Get))
 {
-    <div class="row">
+    <div class="row" style="margin: 20px 0">
         <div class="form-group">
             <div class="col-md-2">
-                User Name:
+                Username:
             </div>
             <div class="col-md-10">
                 <input type="text" name="username" />
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group">
             <div class="col-md-2">
-                First Name:
+                Firstname:
             </div>
             <div class="col-md-10">
                 <input type="text" name="firstname" />
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group">
             <div class="col-md-2">
-                Last Name:
+                Lastname:
             </div>
             <div class="col-md-10">
                 <input type="text" name="lastname" />
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Search" class="btn btn-default" />
+            <div class="col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" style="position: absolute; top: 20px" />
             </div>
         </div>
     </div>
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<hr/>
+
+<button type="button" class="btn" style="border-radius: 15px 5px;">
+    @Html.ActionLink("Create a new User", "Create")
+</button>
+
+<table class="table" style="margin: 20px 0">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Gender)
@@ -71,32 +68,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAdmin)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
