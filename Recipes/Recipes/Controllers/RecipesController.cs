@@ -31,10 +31,9 @@ namespace Recipes.Controllers
             if (currentUser == null) return null;
 
             var currentUserFromDb = _db.Clients.Where(x => x.Id == currentUser.Id).Include("Recipes").SingleOrDefault();
+            var currentUserRecipes = currentUserFromDb?.Recipes;
 
-            if (currentUserFromDb == null) return null;
-
-            var currentUserRecipes = currentUserFromDb.Recipes;
+            if (currentUserRecipes == null || !currentUserRecipes.Any()) return null;
 
             // Find the food category in which the current user wrote most of his recipes, and then get the
             // recipe with the biggest number of comments in this category and display it to the current user
