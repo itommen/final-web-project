@@ -43,14 +43,14 @@
         <center>
             <div id="temperatureDiv">
                 <br /><hr />
-                <h4>Weather</h4>
+                <h4>Weather in Rishon Lezion</h4>
                 <p>getting info...</p>
             </div>
         </center>
 
         <!-- Weather webservice -->
         <script src="~/Scripts/weather.js"></script>
-        <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='jerusalem, il') and u='c'&format=json&callback=weatherCallback"></script>
+        <script src="https://query.yahooapis.com/v1/public/yql?q=select item, wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='Rishon LeZion, il') and u='c'&format=json&callback=weatherCallback"></script>
         <hr />
         <footer>
             <center>
