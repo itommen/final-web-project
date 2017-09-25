@@ -206,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Db\ApplicationDbContext.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />

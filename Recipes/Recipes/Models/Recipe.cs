@@ -6,10 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Recipes.Models
 {
-    public class Recipe
+    public class Recipe : BaseModel
     {
-        public int Id { get; set; }
-
         [Required]
         [ForeignKey("Client")]
         [DisplayName("Posting Client")]

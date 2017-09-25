@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Recipes.Models
 {
-    public class Category
+    public class Category : BaseModel
     {
-        public int Id { get; set; }
-
         [Required]
         [DisplayName("Food Category")]
         public string Name { get; set; }

@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Recipes.Models
 {
-    public class Client
+    public class Client : BaseModel
     {
-        public int Id { get; set; }
-  
         public Gender Gender { get; set; }
 
         [Required]

@@ -5,10 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Recipes.Models
 {
-    public class Comment
+    public class Comment : BaseModel
     {
-        public int Id { get; set; }
-
         [Required]
         [ForeignKey("Client")]
         public int ClientId { get; set; }
