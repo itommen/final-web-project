@@ -77,24 +77,26 @@
 {
     <section>
         <article class="blogPost">
-            <h4 style="color: green">
-                @Html.DisplayFor(modelItem => recipe.Title)
-            </h4>
-
+            <div>
+                <h4 style="color: green; display: inline-block;">
+                    @Html.DisplayFor(modelItem => recipe.Title)
+                </h4>
+                <a href="https://twitter.com/intent/tweet?screen_name=CoolRecipe&text=Check out this cool recipe for @recipe.Title ! http://localhost:53013/Recipes/Details/@recipe.Id" class="twitter-mention-button" data-show-count="false">Tweet to CoolRecipe</a>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
             <p>Posted on @Html.DisplayFor(modelItem => recipe.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => recipe.Client.ClientName)</a> - <a href="#comments">@recipe.Comments.Count Comments</a> in @Html.DisplayFor(modelItem => recipe.Category.Name) category</p>
 
             <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
                 @Html.DisplayFor(modelItem => recipe.Content)
-            </div>
-
-            @if (clnt != null && clnt.IsAdmin)
-                {
+            </div>                        
                 <div>
-                    @Html.ActionLink("Edit", "Edit", new { id = recipe.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = recipe.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = recipe.Id })
-                </div>
-            }
+                    @Html.ActionLink("Details", "Details", new { id = recipe.Id })
+                    @if (clnt != null && clnt.IsAdmin)
+                    {
+                        <span> | </span> @Html.ActionLink("Edit", "Edit", new { id = recipe.Id })
+                        <span> | </span> @Html.ActionLink("Delete", "Delete", new { id = recipe.Id })
+                    }
+                </div>            
         </article>
     </section>
     <br />
