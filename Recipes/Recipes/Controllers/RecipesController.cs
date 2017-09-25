@@ -18,8 +18,7 @@ namespace Recipes.Controllers
         {
             var recipes = _db.Recipes.Include(p => p.Client).Include(p => p.Category);
 
-            var recommendedRecipe = GetRecommendedRecipe(recipes);
-            ViewBag.RecommendedRecipe = recommendedRecipe;
+            ViewBag.RecommendedRecipe = GetRecommendedRecipe(recipes);
 
             return View(recipes.ToList());
         }
@@ -30,8 +29,7 @@ namespace Recipes.Controllers
 
             if (currentUser == null) return null;
 
-            var currentUserFromDb = _db.Clients.Where(x => x.Id == currentUser.Id).Include("Recipes").SingleOrDefault();
-            var currentUserRecipes = currentUserFromDb?.Recipes;
+            var currentUserRecipes = _db.Clients.Where(x => x.Id == currentUser.Id).Include(x => x.Recipes).SingleOrDefault()?.Recipes;
 
             if (currentUserRecipes == null || !currentUserRecipes.Any()) return null;
 
@@ -42,12 +40,11 @@ namespace Recipes.Controllers
                 .GroupBy(x => x.Category)
                 .OrderByDescending(x => x.Key.Recipes.Count(recipe => recipe.ClientId == currentUser.Id))
                 .FirstOrDefault()?.Key;
-            Recipe recommendedRecipe = allRecipes
+
+            return allRecipes
                 .Where(x => x.Category.Id == currUserTopCategory.Id)
                 .OrderByDescending(x => x.Comments.Count)
-                .FirstOrDefault();
-
-            return recommendedRecipe;
+                .FirstOrDefault(); ;
         }
 
         public ActionResult Details(int? id)

@@ -7,7 +7,7 @@ namespace Recipes.Controllers
     {
         public static bool AdminAuthorized(HttpSessionStateBase session)
         {
-            return (Client)session["Client"] != null && ((Client)session["Client"]).IsAdmin;
+            return Authorized(session) && ((Client)session["Client"]).IsAdmin;
         }
 
         public static bool Authorized(HttpSessionStateBase session)

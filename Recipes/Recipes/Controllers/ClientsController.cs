@@ -61,7 +61,7 @@ namespace Recipes.Controllers
             _db.Clients.Add(client);
             _db.SaveChanges();
 
-            return RedirectToAction("RecipesLogin", "Clients");    
+            return RedirectToAction("RecipesLogin", "Clients");
         }
 
         public ActionResult Edit(int? id)
@@ -123,21 +123,16 @@ namespace Recipes.Controllers
             var pass = client.Password;
             var logonName = client.ClientName;
 
-            try
-            {
-                var requestedClient = _db.Clients.Single(u => u.ClientName.Equals(logonName) && u.Password.Equals(pass));
+            var requestedClient = _db.Clients.SingleOrDefault(u => u.ClientName.Equals(logonName) && u.Password.Equals(pass));
 
-                if (requestedClient != null)
-                {
-                    Session.Add("Client", requestedClient);
-                }
-
-                return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
+            if (requestedClient == null)
             {
                 return RedirectToAction("FailedLogin", "Clients");
             }
+
+            Session.Add("Client", requestedClient);
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Logout()
@@ -167,15 +162,13 @@ namespace Recipes.Controllers
 
             var recipes = _db.Recipes.Where(x => x.ClientId == id).ToList();
 
-            foreach (var currRecipe in recipes)
+            foreach (var currComment in _db.Comments.Where(x => x.ClientId == id).ToList())
             {
-                var comments = _db.Comments.Where(x => x.RecipeId == currRecipe.Id).ToList();
-                    
-                foreach (var currComment in comments)
-                {
-                    _db.Comments.Remove(currComment);
-                }
+                _db.Comments.Remove(currComment);
+            }
 
+            foreach (var currRecipe in recipes)
+            {               
                 _db.Recipes.Remove(currRecipe);
             }
 
@@ -206,17 +199,7 @@ namespace Recipes.Controllers
                 };
 
             return View(query.ToList());
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _db.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
+        }       
 
         [HttpGet]
         public ActionResult Search(string username, string firstname, string lastname)
@@ -254,6 +237,16 @@ namespace Recipes.Controllers
             });
 
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+         protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
     }
 }

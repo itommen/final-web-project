@@ -25,6 +25,11 @@ namespace Recipes.Controllers
 
         public ActionResult Details(int? id)
         {
+            if (!AuthorizationMiddleware.AdminAuthorized(Session))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,17 +42,12 @@ namespace Recipes.Controllers
                 return HttpNotFound();
             }
 
-            if (AuthorizationMiddleware.AdminAuthorized(Session))
-            {
-                return View(category);
-            }
-
-            return RedirectToAction("Index", "Home");
+            return View(category);
         }
 
         public ActionResult Create()
         {
-            if ((Client)Session["Client"] != null && ((Client)Session["Client"]).IsAdmin)
+            if (AuthorizationMiddleware.AdminAuthorized(Session))
             {
                 return View();
             }
